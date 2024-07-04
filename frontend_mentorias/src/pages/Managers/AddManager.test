@@ -1,0 +1,41 @@
+// import React from 'react';
+// import { render, screen, fireEvent } from '@testing-library/react';
+// import '@testing-library/jest-dom/extend-expect';
+// import { BrowserRouter as Router } from 'react-router-dom';
+// import AddManager from './AddManager';
+// import Modal from 'react-modal';
+
+// Modal.setAppElement(document.createElement('div')); // Necesario para React Modal
+
+// describe('AddManager Integration Test', () => {
+//   test('opens and closes the confirmation modal correctly', () => {
+//     render(
+//       <Router>
+//         <AddManager />
+//       </Router>
+//     );
+
+//     // Verificar que el modal no está abierto inicialmente
+//     expect(screen.queryByText('¡Registro exitoso!')).not.toBeInTheDocument();
+    
+//     // Completar los campos del formulario
+//     fireEvent.change(screen.getByPlaceholderText('Nombres...'), { target: { value: 'Juan' } });
+//     fireEvent.change(screen.getByPlaceholderText('Apellidos...'), { target: { value: 'Pérez' } });
+//     fireEvent.change(screen.getByPlaceholderText('ejemplo@espe.edu.ec'), { target: { value: 'juan@espe.edu.ec' } });
+//     fireEvent.change(screen.getByPlaceholderText('Av. Ejemplo y Ejemplo Oe4-76'), { target: { value: 'Dirección de Ejemplo' } });
+
+//     // Enviar el formulario
+//     fireEvent.click(screen.getByText('Registrar Encargado'));
+
+//     // Verificar que el modal de confirmación está abierto
+//     expect(screen.getByText('¡Registro exitoso!')).toBeInTheDocument();
+//     expect(screen.getByText('El registro se realizó correctamente.')).toBeInTheDocument();
+//     expect(screen.getByRole('button', { name: 'Entendido' })).toBeInTheDocument();
+
+//     // Cerrar el modal de confirmación
+//     fireEvent.click(screen.getByRole('button', { name: 'Entendido' }));
+
+//     // Verificar que el modal de confirmación está cerrado
+//     expect(screen.queryByText('¡Registro exitoso!')).not.toBeInTheDocument();
+//   });
+// });
