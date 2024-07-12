@@ -54,19 +54,20 @@ const Login = () => {
         navigate("/");
       })
       .catch((err) => {
-        if (err.response.status === 401) {
+        if (err.response && err.response.status === 401) {
           setWrongCredentials(true);
         }
       });
   };
+
   return (
     <div className="w-full flex justify-center items-center min-h-screen">
       <div className="w-full flex justify-center items-center min-h-screen bg-gray-200">
         <div className="w-full max-w-xs ">
-          <form className="bg-white shadow-xl rounded-lg px-8 pt-6 pb-8 mb-4">
+          <form className="bg-white shadow-xl rounded-lg px-8 pt-6 pb-8 mb-4" onSubmit={handleLogin}>
             <img src={logo} alt="logo" className="my-3" />
-            <h1 className="text-center font-black text-xl mb-3">
-              INICIAR SESIÓN{" "}
+            <h1 className="text-center font-black text-xl mb-3" data-testid="login-title">
+              INICIAR SESIÓN
             </h1>
             <div className="mb-4">
               <label
@@ -85,11 +86,11 @@ const Login = () => {
                 onChange={handleChange}
                 placeholder="Nombre de usuario"
               />
-              {errorUserData.userName ? (
-                <p class="text-red-500 text-xs italic">
-                  Porfavor proporcione un usuario.
+              {errorUserData.userName && (
+                <p className="text-red-500 text-xs italic">
+                  Por favor proporcione un usuario.
                 </p>
-              ) : null}
+              )}
             </div>
             <div className="mb-6">
               <label
@@ -107,27 +108,25 @@ const Login = () => {
                 name="password"
                 onChange={handleChange}
                 type="password"
-                placeholder="******************"
+                placeholder="Contrasenia"
               />
-              {errorUserData.password ? (
-                <p class="text-red-500 text-xs italic">
-                  Porfavor proporcione una contraseña.
+              {errorUserData.password && (
+                <p className="text-red-500 text-xs italic">
+                  Por favor proporcione una contraseña.
                 </p>
-              ) : null}
+              )}
             </div>
 
-            {wrongCredentials ? (
-              <p class="text-red-500 text-xs italic mb-4 text-center flex justify-center items-center">
+            {wrongCredentials && (
+              <p className="text-red-500 text-xs italic mb-4 text-center flex justify-center items-center">
                 <RiErrorWarningFill className="mr-2" fontSize={15} />
                 Las credenciales proporcionadas son erradas.
               </p>
-            ) : null}
+            )}
             <div className="flex items-center justify-center">
               <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button"
-                onClickCapture={handleLogin}
-                onClick={handleLogin}
+                type="submit"
               >
                 Iniciar sesión
               </button>
